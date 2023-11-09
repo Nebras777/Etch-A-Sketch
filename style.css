@@ -1,5 +1,5 @@
 body {
-    background-color: red;
+    background-color: white;
     margin: 0;
 }
 
@@ -30,3 +30,7 @@ body {
     grid-template-rows: repeat(16, 1fr);
 }
 
+.box {
+    user-select: none;
+    cursor: pointer;
+}
