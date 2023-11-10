@@ -41,6 +41,8 @@ body {
 #controls-left {
     display: flex;
     flex-direction: column;
+    height: 375px;
+    align-items: center;
 }
 
 #color-picker {
@@ -49,5 +51,12 @@ body {
     appearance: none;
     border: none;
     background-color: transparent;
+}
+
+#button-div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: auto 0;
 }
 
