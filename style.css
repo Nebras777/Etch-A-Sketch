@@ -4,7 +4,9 @@ body {
 }
 
 #header {
+    display: flex;
     padding: 30px 0px;
+    justify-content: flex-start;
 }
 
 #header p {
@@ -16,8 +18,9 @@ body {
 
 #container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    gap: 100px;
 }
 
 #canvas {
@@ -34,3 +37,17 @@ body {
     user-select: none;
     cursor: pointer;
 }
+
+#controls-left {
+    display: flex;
+    flex-direction: column;
+}
+
+#color-picker {
+    width: 100px;
+    height: 100px;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+}
+
