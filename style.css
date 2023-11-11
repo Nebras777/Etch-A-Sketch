@@ -60,3 +60,18 @@ body {
     margin: auto 0;
 }
 
+.rainbow {
+    animation: rainbow-anim 10s linear infinite;
+}
+
+@keyframes rainbow-anim {
+    0%, 100% {background-color: red;}
+    12.5% {background-color: orange;}
+    25% {background-color: yellow;}
+    37.5% {background-color: lime;}
+    50% {background-color: cyan;}
+    62.5% {background-color: blue;}
+    75% {background-color: rgb(128, 0, 255);}
+    87.5% {background-color: magenta}
+}
+
