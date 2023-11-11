@@ -38,11 +38,15 @@ body {
     cursor: pointer;
 }
 
-#controls-left {
+#controls-left, #controls-right {
     display: flex;
     flex-direction: column;
     height: 375px;
     align-items: center;
+}
+
+#controls-right {
+    gap: 30px;
 }
 
 #color-picker {

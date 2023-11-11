@@ -2,10 +2,12 @@ const INITIAL_COLOR = '#ff0000'
 const INITIAL_MODE = 'color'
 
 const canvas = document.getElementById('canvas')
+const fullCanvas = document.querySelectorAll('.box')
 const colorPicker = document.getElementById('color-picker')
 const colorButton = document.getElementById('color-button')
 const randomButton = document.getElementById('random-button')
 const rainbowButton = document.getElementById('rainbow-button')
+const eraserButton = document.getElementById('eraser-button')
 
 let color = INITIAL_COLOR
 let mode = INITIAL_MODE
@@ -17,21 +19,29 @@ colorPicker.oninput = (e) => color = e.target.value
 colorButton.onclick = () => mode = 'color'
 randomButton.onclick = () => mode = 'random'
 rainbowButton.onclick = () => mode = 'rainbow'
+eraserButton.onclick = () => mode = 'eraser'
+
+function coloring(item) {
+    if (mode === 'color') {
+        item.classList.remove('rainbow')
+        item.style.backgroundColor = color
+    } else if (mode === 'random') {
+        item.classList.remove('rainbow')
+        red = Math.floor(Math.random() * 256)
+        green = Math.floor(Math.random() * 256)
+        blue = Math.floor(Math.random() * 256)
+        item.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
+    } else if (mode === 'rainbow') {
+        item.classList.add('rainbow')
+    } else if (mode === 'eraser') {
+        item.classList.remove('rainbow')
+        item.style.backgroundColor = 'white'
+    }
+}
 
 function changeColor(e) {
     if (!(e.type === 'mouseover' && !mouseDown)) {
-        if (mode === 'color') {
-            e.target.classList.remove('rainbow')
-            e.target.style.backgroundColor = color
-        } else if (mode === 'random') {
-            e.target.classList.remove('rainbow')
-            red = Math.floor(Math.random() * 256)
-            green = Math.floor(Math.random() * 256)
-            blue = Math.floor(Math.random() * 256)
-            e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
-        } else if (mode === 'rainbow') {
-            e.target.classList.add('rainbow')
-        }
+        coloring(e.target)
     }
 }
 
