@@ -2,12 +2,13 @@ const INITIAL_COLOR = '#ff0000'
 const INITIAL_MODE = 'color'
 
 const canvas = document.getElementById('canvas')
-const fullCanvas = document.querySelectorAll('.box')
 const colorPicker = document.getElementById('color-picker')
 const colorButton = document.getElementById('color-button')
 const randomButton = document.getElementById('random-button')
 const rainbowButton = document.getElementById('rainbow-button')
 const eraserButton = document.getElementById('eraser-button')
+const fillButton = document.getElementById('fill-button')
+const slider = document.getElementById('slider')
 
 let color = INITIAL_COLOR
 let mode = INITIAL_MODE
@@ -53,3 +54,6 @@ for (let i = 1; i <= 16**2; i++) {
     canvas.appendChild(content)
 }
 
+const fullCanvas = document.querySelectorAll('.box')
+
+fillButton.onclick = () => fullCanvas.forEach(coloring)
