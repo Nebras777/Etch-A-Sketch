@@ -79,22 +79,3 @@ body {
     87.5% {background-color: magenta}
 }
 
-#slider-div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-#slider {
-    appearance: slider-vertical;
-}
-
-#values {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    writing-mode: horizontal-tb;
-    height: 140px;
-    margin-left: -50px;
-}

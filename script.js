@@ -1,5 +1,6 @@
 const INITIAL_COLOR = '#ff0000'
 const INITIAL_MODE = 'color'
+const INITIAL_SIZE = 16
 
 const canvas = document.getElementById('canvas')
 const colorPicker = document.getElementById('color-picker')
@@ -8,19 +9,58 @@ const randomButton = document.getElementById('random-button')
 const rainbowButton = document.getElementById('rainbow-button')
 const eraserButton = document.getElementById('eraser-button')
 const fillButton = document.getElementById('fill-button')
-const slider = document.getElementById('slider')
+const clearButton = document.getElementById('clear-button')
+const sizeInput = document.getElementById('size-input')
+const sizeText = document.getElementById('size-text')
 
 let color = INITIAL_COLOR
 let mode = INITIAL_MODE
+let size = INITIAL_SIZE
 let mouseDown = false;
 
 canvas.onmousedown = () => (mouseDown = true)
 canvas.onmouseup = () => (mouseDown = false)
-colorPicker.oninput = (e) => color = e.target.value
+colorPicker.oninput = (e) => {color = e.target.value; mode = 'color'}
 colorButton.onclick = () => mode = 'color'
 randomButton.onclick = () => mode = 'random'
 rainbowButton.onclick = () => mode = 'rainbow'
 eraserButton.onclick = () => mode = 'eraser'
+clearButton.onclick = () => clearGrid()
+sizeInput.onchange = (e) => sizeChange(e)
+
+function gridChange(amount) {
+    canvas.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+    canvas.style.gridTemplateRows = `repeat(${size}, 1fr)`
+    for (let i = 1; i <= amount**2; i++) {
+        const content = document.createElement('div')
+        content.classList.add('box')
+        content.addEventListener('mouseover', changeColor)
+        content.addEventListener('mousedown', changeColor)
+        canvas.appendChild(content)
+    }
+}
+
+gridChange(16)
+
+let fullCanvas = document.querySelectorAll('.box')
+
+fillButton.onclick = () => fillGrid()
+
+function fillGrid() {
+    if (mode === "eraser") {
+        alert("Cannot fill in eraser mode. Please pick another mode, or clear instead.")
+    } else {
+        fullCanvas = document.querySelectorAll('.box')
+        fullCanvas.forEach(coloring)
+    }
+}
+
+function clearGrid() {
+    fullCanvas = document.querySelectorAll('.box')
+    mode = 'eraser'
+    fullCanvas.forEach(coloring)
+    mode = 'color'
+}
 
 function coloring(item) {
     if (mode === 'color') {
@@ -46,14 +86,15 @@ function changeColor(e) {
     }
 }
 
-for (let i = 1; i <= 16**2; i++) {
-    const content = document.createElement('div')
-    content.classList.add('box')
-    content.addEventListener('mouseover', changeColor)
-    content.addEventListener('mousedown', changeColor)
-    canvas.appendChild(content)
+function sizeChange(e) {
+    if (e.target.value < 1 || e.target.value > 64) {
+        alert("Minimum is 1. Maximum is 64.")
+        e.target.value = size
+    } else {
+        clearGrid()
+        size = e.target.value
+        sizeText.textContent = `Size: ${size}x${size}`
+        gridChange(size)
+    }
 }
 
-const fullCanvas = document.querySelectorAll('.box')
-
-fillButton.onclick = () => fullCanvas.forEach(coloring)
