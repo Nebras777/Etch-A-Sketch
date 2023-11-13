@@ -1,24 +1,27 @@
+* {
+    font-family: Helvetica;
+}
+
 body {
-    background-color: white;
+    background-color: linen;
     margin: 0;
 }
 
 #header {
     display: flex;
     padding: 30px 0px;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 #header p {
     font-size: 50px;
     margin: 0;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 100px;
 }
@@ -28,7 +31,7 @@ body {
     background-color: white;
     width: 500px;
     height: 500px;
-    border: 2px solid black;
+    border: 5px solid black;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
 }
@@ -41,27 +44,30 @@ body {
 #controls-left, #controls-right {
     display: flex;
     flex-direction: column;
+    width: 150px;
     height: 375px;
     align-items: center;
 }
 
 #controls-right {
-    gap: 30px;
+    gap: 50px;
+    justify-content: end;
 }
 
 #color-picker {
-    width: 100px;
-    height: 100px;
+    width: 115px;
+    height: 115px;
     appearance: none;
     border: none;
     background-color: transparent;
+    transition: transform 0.1s ease-in-out;
 }
 
 #button-div {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    margin: auto 0;
+    gap: 50px;
+    margin-top: auto;
 }
 
 .rainbow {
@@ -79,3 +85,63 @@ body {
     87.5% {background-color: magenta}
 }
 
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 125px;
+}
+
+#pfp {
+    width: 50px;
+    border-radius: 50%;
+}
+
+#link {
+    height: 50px;
+}
+
+
+.buttons {
+    background-color: white;
+    width: 150px;
+    height: 30px;
+    border: 3px solid black;
+    border-radius: 5px;
+    font-size: medium;
+    transition: transform 0.1s ease-in-out;
+}
+
+.buttons:hover,
+#color-picker:hover {
+    transform: scale(1.10);
+    cursor: pointer;
+}
+
+#size-text {
+    margin-top: 20px;
+    margin-bottom: -20px;
+    font-size: x-large;
+}
+
+#size-input {
+    width: 115px;
+    margin-bottom: 20px;
+    font-size: medium;
+    border: 3px solid black;
+    transition: width 0.1s ease-in-out;
+}
+
+#size-input:hover {
+    width: 140px;
+}
+
+.active {
+    color: white;
+    background-color: black;
+}
+
+#fill-button:active,
+#clear-button:active {
+    transform: scale(1);
+}

@@ -21,12 +21,14 @@ let mouseDown = false;
 canvas.onmousedown = () => (mouseDown = true)
 canvas.onmouseup = () => (mouseDown = false)
 colorPicker.oninput = (e) => {color = e.target.value; mode = 'color'}
-colorButton.onclick = () => mode = 'color'
-randomButton.onclick = () => mode = 'random'
-rainbowButton.onclick = () => mode = 'rainbow'
-eraserButton.onclick = () => mode = 'eraser'
+colorButton.onclick = () => {mode = 'color'; activeButton()}
+randomButton.onclick = () => {mode = 'random'; activeButton()}
+rainbowButton.onclick = () => {mode = 'rainbow'; activeButton()}
+eraserButton.onclick = () => {mode = 'eraser'; activeButton()}
 clearButton.onclick = () => clearGrid()
 sizeInput.onchange = (e) => sizeChange(e)
+
+activeButton()
 
 function gridChange(amount) {
     canvas.style.gridTemplateColumns = `repeat(${size}, 1fr)`
@@ -98,3 +100,26 @@ function sizeChange(e) {
     }
 }
 
+function activeButton() {
+    if (mode === 'color') {
+        colorButton.classList.add('active')
+        randomButton.classList.remove('active')
+        rainbowButton.classList.remove('active')
+        eraserButton.classList.remove('active')
+    } else if (mode === 'random') {
+        colorButton.classList.remove('active')
+        randomButton.classList.add('active')
+        rainbowButton.classList.remove('active')
+        eraserButton.classList.remove('active')
+    } else if (mode === 'rainbow') {
+        colorButton.classList.remove('active')
+        randomButton.classList.remove('active')
+        rainbowButton.classList.add('active')
+        eraserButton.classList.remove('active')
+    } else {
+        colorButton.classList.remove('active')
+        randomButton.classList.remove('active')
+        rainbowButton.classList.remove('active')
+        eraserButton.classList.add('active')
+    }
+}
