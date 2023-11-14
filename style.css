@@ -5,6 +5,7 @@
 body {
     background-color: linen;
     margin: 0;
+    min-width: 1100px;
 }
 
 #header {
@@ -31,7 +32,7 @@ body {
     background-color: white;
     width: 500px;
     height: 500px;
-    border: 5px solid black;
+    border: 3px solid black;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
 }
@@ -95,6 +96,11 @@ body {
 #pfp {
     width: 50px;
     border-radius: 50%;
+    transition: transform 0.1s ease-in-out;
+}
+
+#pfp:hover {
+    transform: scale(1.2) rotate(5deg);
 }
 
 #link {
@@ -139,6 +145,10 @@ body {
 .active {
     color: white;
     background-color: black;
+}
+
+.active-rainbow {
+    animation: rainbow-anim 10s linear infinite;
 }
 
 #fill-button:active,

@@ -62,6 +62,7 @@ function clearGrid() {
     mode = 'eraser'
     fullCanvas.forEach(coloring)
     mode = 'color'
+    activeButton()
 }
 
 function coloring(item) {
@@ -104,22 +105,22 @@ function activeButton() {
     if (mode === 'color') {
         colorButton.classList.add('active')
         randomButton.classList.remove('active')
-        rainbowButton.classList.remove('active')
+        rainbowButton.classList.remove('active-rainbow')
         eraserButton.classList.remove('active')
     } else if (mode === 'random') {
         colorButton.classList.remove('active')
         randomButton.classList.add('active')
-        rainbowButton.classList.remove('active')
+        rainbowButton.classList.remove('active-rainbow')
         eraserButton.classList.remove('active')
     } else if (mode === 'rainbow') {
         colorButton.classList.remove('active')
         randomButton.classList.remove('active')
-        rainbowButton.classList.add('active')
+        rainbowButton.classList.add('active-rainbow')
         eraserButton.classList.remove('active')
     } else {
         colorButton.classList.remove('active')
         randomButton.classList.remove('active')
-        rainbowButton.classList.remove('active')
+        rainbowButton.classList.remove('active-rainbow')
         eraserButton.classList.add('active')
     }
 }
